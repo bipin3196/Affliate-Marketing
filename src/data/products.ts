@@ -770,6 +770,147 @@ export const PRODUCTS: Product[] = [
       { date: "2026-11-01", priceINR: 10499, priceAUD: 179, priceUSD: 119 }
     ]
   },
+  {
+    id: "asus-rog-strix-z790-e",
+    name: "ASUS ROG STRIX Z790-E Gaming WIFI Motherboard (LGA1700, DDR5, PCIe 5.0)",
+    slug: "asus-rog-strix-z790-e",
+    brand: "ASUS",
+    description: "Premium enthusiast Intel motherboard engineered for 13th & 14th Gen Intel Core processors. Features 18+1 power stages, PCIe 5.0 M.2 slot, Wi-Fi 6E, and robust heatsinks.",
+    category: "components",
+    subcategory: "motherboards",
+    pcPartType: "motherboard",
+    basePriceINR: 44999,
+    basePriceAUD: 689,
+    basePriceUSD: 469,
+    rating: 4.9,
+    reviewCount: 1120,
+    affiliateUrl: "https://amazon.in",
+    pros: [
+      "18+1 power stages for high-frequency Core i7/i9 overclocking",
+      "PCIe 5.0 M.2 slot with thermal heatsink",
+      "Wi-Fi 6E and Intel 2.5Gb Ethernet"
+    ],
+    cons: [
+      "LGA1700 socket is not compatible with AMD Ryzen processors"
+    ],
+    releaseDate: "2023-10-15",
+    badges: ["Top Performance"],
+    specifications: {
+      "Socket": "LGA1700",
+      "Chipset": "Intel Z790",
+      "Form Factor": "ATX",
+      "Memory Support": "4x DDR5 DIMM (Up to 7800+ MHz, 192GB Max)",
+      "PCIe Slots": "1x PCIe 5.0 x16, 2x PCIe 4.0 x16",
+      "Storage": "5x M.2 slots (1x PCIe 5.0, 4x PCIe 4.0)"
+    },
+    componentSpecs: {
+      socket: "LGA1700",
+      chipset: "Z790",
+      formFactor: "ATX",
+      memoryType: "DDR5",
+      memorySlots: 4,
+      maxMemoryGB: 192,
+      pcieVersion: "PCIe 5.0",
+      m2Slots: 5,
+      wifiSupport: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=800&auto=format&fit=crop&q=80"
+    ],
+    faqs: [],
+    retailers: [
+      {
+        store: "Amazon India",
+        storeSlug: "amazon-in",
+        region: "IN",
+        priceINR: 44999,
+        priceAUD: 689,
+        priceUSD: 469,
+        inStock: true,
+        affiliateUrl: "https://amazon.in"
+      },
+      {
+        store: "Scorptec Australia",
+        storeSlug: "scorptec",
+        region: "AU",
+        priceINR: 45800,
+        priceAUD: 679,
+        priceUSD: 465,
+        inStock: true,
+        affiliateUrl: "https://scorptec.com.au"
+      }
+    ],
+    priceHistory: [
+      { date: "2026-05-01", priceINR: 48999, priceAUD: 739, priceUSD: 499 },
+      { date: "2026-11-01", priceINR: 44999, priceAUD: 679, priceUSD: 465 }
+    ]
+  },
+  {
+    id: "asrock-b550m-pro4",
+    name: "ASRock B550M PRO4 Micro-ATX Motherboard (AM4, DDR4)",
+    slug: "asrock-b550m-pro4",
+    brand: "ASRock",
+    description: "Budget champion for previous-generation AM4 systems. Supports Ryzen 3000/4000/5000 series with dual DDR4 slots, dual M.2 slots, and PCIe 4.0 support.",
+    category: "components",
+    subcategory: "motherboards",
+    pcPartType: "motherboard",
+    basePriceINR: 8999,
+    basePriceAUD: 149,
+    basePriceUSD: 89,
+    rating: 4.6,
+    reviewCount: 3100,
+    affiliateUrl: "https://amazon.in",
+    pros: [
+      "Inexpensive platform for budget esports gaming builds",
+      "Dual M.2 SSD slots",
+      "Supports affordable DDR4 memory kits"
+    ],
+    cons: [
+      "AM4 socket (cannot be upgraded to Ryzen 7000/9000)",
+      "Requires DDR4 only (incompatible with DDR5)"
+    ],
+    releaseDate: "2020-07-01",
+    badges: ["Best Value"],
+    specifications: {
+      "Socket": "AM4",
+      "Chipset": "AMD B550",
+      "Form Factor": "Micro-ATX",
+      "Memory Support": "4x DDR4 DIMM (Up to 128GB)",
+      "Storage": "2x M.2 slots, 6x SATA"
+    },
+    componentSpecs: {
+      socket: "AM4",
+      chipset: "B550",
+      formFactor: "Micro-ATX",
+      memoryType: "DDR4",
+      memorySlots: 4,
+      maxMemoryGB: 128,
+      pcieVersion: "PCIe 4.0",
+      m2Slots: 2,
+      wifiSupport: false,
+      biosUpdateNeededForRyzen5000: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=800&auto=format&fit=crop&q=80"
+    ],
+    faqs: [],
+    retailers: [
+      {
+        store: "Amazon India",
+        storeSlug: "amazon-in",
+        region: "IN",
+        priceINR: 8999,
+        priceAUD: 149,
+        priceUSD: 89,
+        inStock: true,
+        affiliateUrl: "https://amazon.in"
+      }
+    ],
+    priceHistory: [
+      { date: "2026-05-01", priceINR: 9499, priceAUD: 159, priceUSD: 99 },
+      { date: "2026-11-01", priceINR: 8999, priceAUD: 149, priceUSD: 89 }
+    ]
+  },
 
   // ==========================================
   // RAM
@@ -845,6 +986,66 @@ export const PRODUCTS: Product[] = [
     priceHistory: [
       { date: "2026-05-01", priceINR: 12500, priceAUD: 219, priceUSD: 139 },
       { date: "2026-11-01", priceINR: 10450, priceAUD: 180, priceUSD: 115 }
+    ]
+  },
+  {
+    id: "kingston-fury-beast-16gb-ddr4-3200",
+    name: "Kingston FURY Beast 16GB (2x8GB) DDR4-3200 CL16",
+    slug: "kingston-fury-beast-16gb-ddr4-3200",
+    brand: "Kingston",
+    description: "Reliable, high-performance DDR4 memory upgrade for Intel LGA1200/older LGA1700 DDR4 and AMD AM4 motherboards. Low-profile heat spreader with Intel XMP 2.0 support.",
+    category: "components",
+    subcategory: "ram",
+    pcPartType: "ram",
+    basePriceINR: 3899,
+    basePriceAUD: 65,
+    basePriceUSD: 45,
+    rating: 4.8,
+    reviewCount: 8900,
+    affiliateUrl: "https://amazon.in",
+    pros: [
+      "Affordable dual-channel 16GB memory upgrade",
+      "Low profile 34mm height fits under all CPU air coolers",
+      "Plug-and-play automatic overclocking"
+    ],
+    cons: [
+      "DDR4 only (physically incompatible with AMD AM5 or DDR5-only motherboards)"
+    ],
+    releaseDate: "2021-08-01",
+    badges: ["Best Value"],
+    specifications: {
+      "Capacity": "16GB (2 x 8GB)",
+      "Memory Type": "DDR4",
+      "Speed": "3200 MHz",
+      "CAS Latency": "CL16",
+      "Voltage": "1.35V"
+    },
+    componentSpecs: {
+      memoryType: "DDR4",
+      speedMhz: 3200,
+      capacityGB: 16,
+      modules: "2x8GB",
+      casLatency: "CL16"
+    },
+    images: [
+      "https://images.unsplash.com/photo-1562976540-1502c2145186?w=800&auto=format&fit=crop&q=80"
+    ],
+    faqs: [],
+    retailers: [
+      {
+        store: "Amazon India",
+        storeSlug: "amazon-in",
+        region: "IN",
+        priceINR: 3899,
+        priceAUD: 65,
+        priceUSD: 45,
+        inStock: true,
+        affiliateUrl: "https://amazon.in"
+      }
+    ],
+    priceHistory: [
+      { date: "2026-05-01", priceINR: 4299, priceAUD: 75, priceUSD: 52 },
+      { date: "2026-11-01", priceINR: 3899, priceAUD: 65, priceUSD: 45 }
     ]
   },
 
