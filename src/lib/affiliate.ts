@@ -11,25 +11,33 @@ export interface AffiliateConfig {
 }
 
 export const DEFAULT_AFFILIATE_CONFIG: AffiliateConfig = {
-  amazonIndiaTag: "techadvisorin-21",
-  amazonAustraliaTag: "techadvisorau-22",
-  amazonUsTag: "techadvisorai-20",
+  amazonIndiaTag: process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG_IN || "techadvisorin-21",
+  amazonAustraliaTag: process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG_AU || "techadvisorau-22",
+  amazonUsTag: process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG_US || "techadvisorai-20",
   mdComputersRef: "techadvisor",
   scorptecRef: "techadvisor",
   vedantRef: "techadvisor",
   primeabgbRef: "techadvisor",
 };
 
-export function buildAffiliateUrl(rawUrl: string, store: string, region: Region = 'IN'): string {
+export function buildAffiliateUrl(
+  rawUrl: string,
+  store: string,
+  region: Region = 'IN',
+  customTag?: string
+): string {
   try {
     const url = new URL(rawUrl);
 
     if (store.toLowerCase().includes("amazon")) {
-      const tag = region === 'AU'
-        ? DEFAULT_AFFILIATE_CONFIG.amazonAustraliaTag
-        : region === 'US'
-          ? DEFAULT_AFFILIATE_CONFIG.amazonUsTag
-          : DEFAULT_AFFILIATE_CONFIG.amazonIndiaTag;
+      const tag = customTag && customTag.trim()
+        ? customTag.trim()
+        : region === 'AU'
+          ? DEFAULT_AFFILIATE_CONFIG.amazonAustraliaTag
+          : region === 'US'
+            ? DEFAULT_AFFILIATE_CONFIG.amazonUsTag
+            : DEFAULT_AFFILIATE_CONFIG.amazonIndiaTag;
+
       url.searchParams.set("tag", tag);
       return url.toString();
     }

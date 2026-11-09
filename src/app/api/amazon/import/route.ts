@@ -1,15 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
-import { importProductFromAmazon, extractAsin } from "@/lib/amazon-api";
+import { importProductFromAmazon, importBulkFromAmazon, extractAsin } from "@/lib/amazon-api";
 import { Region } from "@/types";
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { asinOrUrl, region = "IN" } = body;
+    const { asinOrUrl, items, region = "IN", customAffiliateTag } = body;
 
+    // Bulk import mode
+    if (items && Array.isArray(items) && items.length > 0) {
+      const results = await importBulkFromAmazon(items, region as Region, customAffiliateTag);
+      return NextResponse.json({
+        success: true,
+        count: results.length,
+        data: results
+      });
+    }
+
+    // Single import mode
     if (!asinOrUrl) {
       return NextResponse.json(
-        { error: "Missing required parameter: asinOrUrl" },
+        { error: "Missing required parameter: asinOrUrl or items array" },
         { status: 400 }
       );
     }
@@ -22,7 +33,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const importedProduct = await importProductFromAmazon(asinOrUrl, region as Region);
+    const importedProduct = await importProductFromAmazon(asinOrUrl, region as Region, customAffiliateTag);
 
     return NextResponse.json({
       success: true,
