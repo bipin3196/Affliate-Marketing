@@ -21,3 +21,8 @@ TechAdvisor AI is an authoritative hardware intelligence, PC configurator, and m
 - No 3-to-4 layer nested card-in-card containers.
 - No low-contrast gray text on dark gray cards.
 
+## 5. Strategic Roadmap & Expansion
+- **Phase 1 (Current)**: Hardware Dominance (PC Builder, GPUs, CPUs, Laptops, Storage, Monitors, Regional Pricing).
+- **Phase 2 (Growth Milestone)**: Hybrid Hardware + AI Tool Subscriptions & SaaS Marketplace. Complete blueprint documented in [`AI_TOOLS_ROADMAP.md`](./AI_TOOLS_ROADMAP.md).
+
+
