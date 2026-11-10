@@ -33,3 +33,4 @@
 - **Flattened Hierarchy**: Avoid nesting cards inside cards. Use subtle surface shifts, thin 1px dividers (`border-slate-800`), and clean table rows.
 - **Single Conviction Badges**: Avoid card overload with 4 colored badges. Maximum 1 primary badge per product card.
 - **Interactive Feedback**: 150ms transitions, subtle scale (`active:scale-[0.98]`), high-contrast focus rings (`focus-visible:ring-2 focus-visible:ring-blue-500`).
+

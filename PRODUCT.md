@@ -20,3 +20,4 @@ TechAdvisor AI is an authoritative hardware intelligence, PC configurator, and m
 - No rounded-square icon tiles floating above every single heading.
 - No 3-to-4 layer nested card-in-card containers.
 - No low-contrast gray text on dark gray cards.
+
