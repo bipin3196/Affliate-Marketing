@@ -15,7 +15,7 @@ import {
   ExternalLink,
   ArrowRight,
   ShieldCheck,
-  RefreshCw
+  RefreshCw,
 } from "lucide-react";
 import { generateAIAdvice, AIRecommendationResult } from "@/lib/aiAdvisor";
 import { useCurrencyStore } from "@/store/useCurrencyStore";
@@ -47,7 +47,7 @@ export function AIAdvisorView() {
       : "I have A$1,500 and want a gaming PC.",
     "I need a laptop for Adobe Photoshop and Microsoft 365.",
     "Best NAS device for private family photo backup.",
-    "Best 4K 240Hz OLED gaming monitor."
+    "Best 4K 240Hz OLED gaming monitor.",
   ];
 
   const handleGenerate = (queryText: string) => {
@@ -56,7 +56,7 @@ export function AIAdvisorView() {
       const res = generateAIAdvice(queryText, currency);
       setActiveResult(res);
       setIsGenerating(false);
-    }, 400);
+    }, 350);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -67,56 +67,55 @@ export function AIAdvisorView() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
       {/* Page Header */}
       <div className="pb-6 border-b border-border/80">
-        <div className="inline-flex items-center space-x-2 text-xs font-bold text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full mb-2">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>AI-Powered Tech Buying Advisor & Part Configurator</span>
+        <div className="inline-flex items-center space-x-2 text-[11px] font-mono uppercase tracking-wider text-muted-foreground mb-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+          <span>Decision Intelligence</span>
+          <span>/</span>
+          <span className="text-foreground">Automated Hardware Advisor</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-foreground">
+        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
           AI Buying Advisor
         </h1>
-        <p className="text-sm text-muted-foreground mt-1">
-          Tell us your budget, intended workloads, or specific software requirements. Our AI models synthesize lab reviews, compatibility rules, and live prices to deliver tailored advice.
+        <p className="text-xs text-muted-foreground mt-1 max-w-2xl">
+          State your budget, workload profile, or software requirements. The engine pairs component compatibility, verified benchmark scores, and regional prices to provide exact recommendations.
         </p>
       </div>
 
-      {/* Natural Language Prompt Bar */}
-      <div className="my-8 max-w-3xl mx-auto">
+      {/* Query Input */}
+      <div className="max-w-3xl mx-auto space-y-3">
         <form
           onSubmit={handleSubmit}
-          className="relative flex items-center bg-card shadow-xl border-2 border-border/80 focus-within:border-cyan-500 rounded-2xl p-2 transition-all"
+          className="relative flex items-center bg-card border border-border focus-within:border-foreground rounded-xl p-1.5 transition-colors shadow-xs"
         >
-          <div className="pl-3.5 text-cyan-500">
-            <Sparkles className="w-5 h-5" />
-          </div>
           <input
             type="text"
             value={inputQuery}
             onChange={(e) => setInputQuery(e.target.value)}
             placeholder="e.g. I have ₹80,000 and want a gaming PC..."
-            className="w-full bg-transparent border-none py-3 px-3 text-sm sm:text-base text-foreground placeholder:text-muted-foreground focus:outline-none"
+            className="w-full bg-transparent border-none py-2 px-3 text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
           />
           <button
             type="submit"
             disabled={isGenerating}
-            className="bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs sm:text-sm px-5 py-3 rounded-xl transition-all shadow-md shadow-cyan-600/20 flex items-center space-x-1.5 shrink-0"
+            className="bg-foreground hover:bg-foreground/90 text-background font-semibold text-xs px-4 py-2 rounded-lg transition-colors flex items-center space-x-1.5 shrink-0"
           >
             {isGenerating ? (
-              <RefreshCw className="w-4 h-4 animate-spin" />
+              <RefreshCw className="w-3.5 h-3.5 animate-spin" />
             ) : (
               <>
-                <span>Ask Advisor</span>
-                <Send className="w-4 h-4" />
+                <span>Analyze</span>
+                <Send className="w-3 h-3" />
               </>
             )}
           </button>
         </form>
 
         {/* Suggestion Chips */}
-        <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
-          <span className="text-[11px] text-muted-foreground font-semibold">Try:</span>
+        <div className="flex flex-wrap items-center justify-center gap-1.5 text-xs">
+          <span className="text-[11px] font-mono uppercase text-muted-foreground mr-1">Prompts:</span>
           {samplePrompts.map((prompt, idx) => (
             <button
               key={idx}
@@ -124,7 +123,7 @@ export function AIAdvisorView() {
                 setInputQuery(prompt);
                 handleGenerate(prompt);
               }}
-              className="text-xs px-3 py-1 rounded-full bg-secondary hover:bg-secondary/80 text-foreground border border-border/70 transition-colors"
+              className="text-xs px-2.5 py-1 rounded-md bg-secondary/50 hover:bg-secondary text-muted-foreground hover:text-foreground border border-border transition-colors"
             >
               {prompt}
             </button>
@@ -134,32 +133,36 @@ export function AIAdvisorView() {
 
       {/* AI Output Section */}
       {activeResult && (
-        <div className="space-y-8 animate-in fade-in duration-300">
-          {/* Executive Summary Advice Card */}
-          <div className="p-6 rounded-3xl bg-gradient-to-r from-blue-500/10 via-cyan-500/5 to-indigo-500/10 border border-blue-500/20 shadow-lg">
-            <div className="flex items-center space-x-2 text-xs font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider mb-2">
-              <Sparkles className="w-4 h-4" />
-              <span>AI Buying Verdict & Strategic Analysis</span>
+        <div className="space-y-6 animate-in fade-in duration-200">
+          {/* Executive Summary Card */}
+          <div className="p-4 sm:p-5 rounded-xl bg-card border border-border shadow-xs space-y-3">
+            <div className="flex items-center justify-between pb-2 border-b border-border">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                Synthesis & Strategic Verdict
+              </span>
+              <span className="text-[11px] font-mono text-muted-foreground">
+                Confidence: High (Lab Verified)
+              </span>
             </div>
-            <p className="text-sm sm:text-base text-foreground font-medium leading-relaxed">
+            <p className="text-xs sm:text-sm text-foreground leading-relaxed">
               {activeResult.summaryAdvice}
             </p>
 
-            <div className="mt-4 pt-4 border-t border-border/60 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-muted-foreground">
+            <div className="pt-3 border-t border-border grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-muted-foreground">
               <div>
-                <span className="font-bold text-foreground block mb-1">
-                  Recommended Purchasing Strategy:
+                <span className="font-semibold text-foreground block mb-0.5">
+                  Purchasing Strategy:
                 </span>
                 {activeResult.purchaseStrategy}
               </div>
               <div>
-                <span className="font-bold text-foreground block mb-1">
+                <span className="font-semibold text-foreground block mb-0.5">
                   Key Criteria Prioritized:
                 </span>
                 <div className="space-y-1">
                   {activeResult.keySpecsHighlighted.slice(0, 2).map((k, i) => (
-                    <div key={i} className="flex items-center space-x-1.5 text-foreground">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                    <div key={i} className="flex items-center space-x-1.5 text-foreground font-mono text-[11px]">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-500 shrink-0" />
                       <span>{k}</span>
                     </div>
                   ))}
@@ -170,23 +173,22 @@ export function AIAdvisorView() {
 
           {/* Primary Recommendation: Top Pick */}
           <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3 flex items-center space-x-2">
-              <Award className="w-4 h-4 text-amber-500" />
-              <span>#1 Top Recommendation for Your Requirements</span>
+            <div className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground mb-2">
+              Primary Recommendation
             </div>
 
-            <div className="p-6 rounded-3xl bg-card border-2 border-primary/40 shadow-xl flex flex-col lg:flex-row gap-6 items-start justify-between">
+            <div className="p-5 rounded-xl bg-card border border-border shadow-xs flex flex-col lg:flex-row gap-6 items-start justify-between">
               <div className="flex-1 space-y-3">
                 <div className="flex items-center space-x-2">
-                  <span className="text-xs font-bold text-primary uppercase">
+                  <span className="text-[10px] font-mono uppercase text-muted-foreground">
                     {activeResult.topPick.brand}
                   </span>
-                  <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
-                    ★ Top Pick
+                  <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                    Optimal Pick
                   </span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-black text-foreground">
+                <h3 className="text-lg sm:text-xl font-bold text-foreground">
                   {activeResult.topPick.name}
                 </h3>
 
@@ -195,13 +197,13 @@ export function AIAdvisorView() {
                 </p>
 
                 {/* Key Pros */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-2">
                   {activeResult.topPick.pros.slice(0, 4).map((pro, pIdx) => (
                     <div
                       key={pIdx}
-                      className="flex items-start space-x-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-medium"
+                      className="flex items-start space-x-1.5 text-xs text-foreground font-mono"
                     >
-                      <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3 h-3 text-emerald-500 shrink-0 mt-0.5" />
                       <span>{pro}</span>
                     </div>
                   ))}
@@ -209,9 +211,11 @@ export function AIAdvisorView() {
               </div>
 
               {/* Pricing & Retailer Box */}
-              <div className="w-full lg:w-72 shrink-0 p-5 rounded-2xl bg-secondary/40 border border-border space-y-3">
-                <div className="text-xs text-muted-foreground">Best Current Price:</div>
-                <div className="text-3xl font-black text-foreground">
+              <div className="w-full lg:w-64 shrink-0 p-4 rounded-lg bg-secondary/30 border border-border space-y-3">
+                <div className="text-[10px] font-mono uppercase text-muted-foreground">
+                  Lowest Tracked Price:
+                </div>
+                <div className="text-2xl font-mono font-extrabold text-foreground">
                   {formatPrice(
                     currency === "INR"
                       ? activeResult.topPick.basePriceINR
@@ -221,8 +225,8 @@ export function AIAdvisorView() {
                     currency
                   )}
                 </div>
-                <div className="text-[11px] text-emerald-600 font-semibold">
-                  ★ {activeResult.topPick.rating} ({activeResult.topPick.reviewCount} reviews)
+                <div className="text-[11px] font-mono text-muted-foreground">
+                  ★ {activeResult.topPick.rating} ({activeResult.topPick.reviewCount} ratings)
                 </div>
 
                 <div className="pt-2 space-y-2">
@@ -230,17 +234,17 @@ export function AIAdvisorView() {
                     href={activeResult.topPick.affiliateUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center space-x-1.5 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-xs shadow-md shadow-primary/20 transition-transform hover:scale-[1.01]"
+                    className="w-full flex items-center justify-center space-x-1 py-2 rounded-md bg-foreground hover:bg-foreground/90 text-background font-semibold text-xs transition-colors"
                   >
                     <span>Check Retailer Price</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
+                    <ExternalLink className="w-3 h-3 ml-0.5" />
                   </a>
 
                   <button
                     onClick={() => addToCompare(activeResult.topPick)}
-                    className="w-full py-2 rounded-xl bg-secondary hover:bg-secondary/80 text-foreground font-semibold text-xs border border-border"
+                    className="w-full py-1.5 rounded-md bg-secondary hover:bg-secondary/80 text-foreground font-medium text-xs border border-border transition-colors"
                   >
-                    Add to Comparison
+                    Compare Specs
                   </button>
                 </div>
               </div>
@@ -248,18 +252,17 @@ export function AIAdvisorView() {
           </div>
 
           {/* Alternatives: Budget Pick & Premium Pick */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {activeResult.budgetAlternative && (
-              <div className="p-5 rounded-2xl bg-card border border-border shadow-md flex flex-col justify-between">
+              <div className="p-4 rounded-xl bg-card border border-border shadow-xs flex flex-col justify-between">
                 <div>
-                  <div className="inline-flex items-center space-x-1 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 mb-2">
-                    <TrendingUp className="w-3 h-3" />
-                    <span>Budget-Friendly Alternative</span>
+                  <div className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-secondary text-muted-foreground border border-border inline-block mb-2">
+                    Value Alternative
                   </div>
-                  <div className="text-xs font-bold text-primary uppercase">
+                  <div className="text-[10px] font-mono uppercase text-muted-foreground">
                     {activeResult.budgetAlternative.brand}
                   </div>
-                  <h4 className="font-bold text-base text-foreground mt-0.5">
+                  <h4 className="font-semibold text-xs sm:text-sm text-foreground mt-0.5">
                     {activeResult.budgetAlternative.name}
                   </h4>
                   <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
@@ -268,7 +271,7 @@ export function AIAdvisorView() {
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-border flex items-center justify-between">
-                  <div className="text-lg font-black text-foreground">
+                  <div className="text-base font-mono font-bold text-foreground">
                     {formatPrice(
                       currency === "INR"
                         ? activeResult.budgetAlternative.basePriceINR
@@ -282,7 +285,7 @@ export function AIAdvisorView() {
                     href={activeResult.budgetAlternative.affiliateUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 py-1.5 rounded-xl bg-secondary hover:bg-secondary/80 text-foreground font-bold text-xs border border-border flex items-center space-x-1"
+                    className="px-2.5 py-1 rounded-md bg-secondary hover:bg-secondary/80 text-foreground font-medium text-xs border border-border flex items-center space-x-1 transition-colors"
                   >
                     <span>View Deal</span>
                     <ExternalLink className="w-3 h-3" />
@@ -292,16 +295,15 @@ export function AIAdvisorView() {
             )}
 
             {activeResult.premiumAlternative && (
-              <div className="p-5 rounded-2xl bg-card border border-border shadow-md flex flex-col justify-between">
+              <div className="p-4 rounded-xl bg-card border border-border shadow-xs flex flex-col justify-between">
                 <div>
-                  <div className="inline-flex items-center space-x-1 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 mb-2">
-                    <Sparkles className="w-3 h-3" />
-                    <span>High-End Enthusiast Alternative</span>
+                  <div className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-secondary text-muted-foreground border border-border inline-block mb-2">
+                    Enthusiast Alternative
                   </div>
-                  <div className="text-xs font-bold text-primary uppercase">
+                  <div className="text-[10px] font-mono uppercase text-muted-foreground">
                     {activeResult.premiumAlternative.brand}
                   </div>
-                  <h4 className="font-bold text-base text-foreground mt-0.5">
+                  <h4 className="font-semibold text-xs sm:text-sm text-foreground mt-0.5">
                     {activeResult.premiumAlternative.name}
                   </h4>
                   <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
@@ -310,7 +312,7 @@ export function AIAdvisorView() {
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-border flex items-center justify-between">
-                  <div className="text-lg font-black text-foreground">
+                  <div className="text-base font-mono font-bold text-foreground">
                     {formatPrice(
                       currency === "INR"
                         ? activeResult.premiumAlternative.basePriceINR
@@ -324,7 +326,7 @@ export function AIAdvisorView() {
                     href={activeResult.premiumAlternative.affiliateUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 py-1.5 rounded-xl bg-secondary hover:bg-secondary/80 text-foreground font-bold text-xs border border-border flex items-center space-x-1"
+                    className="px-2.5 py-1 rounded-md bg-secondary hover:bg-secondary/80 text-foreground font-medium text-xs border border-border flex items-center space-x-1 transition-colors"
                   >
                     <span>View Deal</span>
                     <ExternalLink className="w-3 h-3" />
@@ -335,20 +337,22 @@ export function AIAdvisorView() {
           </div>
 
           {/* Upgrade Path Road-Map */}
-          <div className="p-6 rounded-3xl bg-card border border-border shadow-md">
-            <h4 className="font-bold text-sm text-foreground uppercase tracking-wider mb-3">
-              Recommended 3-Year Upgrade Path
-            </h4>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 sm:p-5 rounded-xl bg-card border border-border shadow-xs space-y-3">
+            <div className="pb-2 border-b border-border">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                Recommended 3-Year Lifecycle & Upgrade Path
+              </span>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {activeResult.upgradePath.map((step, sIdx) => (
                 <div
                   key={sIdx}
-                  className="p-4 rounded-2xl bg-secondary/30 border border-border/80 flex items-start space-x-3"
+                  className="p-3 rounded-lg bg-secondary/30 border border-border flex items-start space-x-2.5"
                 >
-                  <div className="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs shrink-0">
-                    {sIdx + 1}
+                  <div className="font-mono text-xs font-bold text-muted-foreground shrink-0 mt-0.5">
+                    0{sIdx + 1}
                   </div>
-                  <div className="text-xs text-foreground font-medium leading-relaxed">
+                  <div className="text-xs text-foreground leading-relaxed">
                     {step}
                   </div>
                 </div>

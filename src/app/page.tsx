@@ -13,12 +13,7 @@ import {
   TrendingUp,
   Star,
   ShieldCheck,
-  Award,
-  ExternalLink,
-  CheckCircle2,
-  Monitor,
-  Laptop,
-  HardDrive
+  ExternalLink
 } from "lucide-react";
 import { HeroSection } from "@/components/home/HeroSection";
 import { PRODUCTS } from "@/data/products";
@@ -37,116 +32,123 @@ export default function HomePage() {
   const hotDeals = ACTIVE_DEALS.slice(0, 3);
 
   return (
-    <div className="space-y-16 pb-16">
+    <div className="space-y-14 pb-16">
       {/* 1. Hero Section */}
       <HeroSection />
 
-      {/* 2. Core Interactive Tool Launch Cards */}
+      {/* 2. Core Hardware Tool Launch Grid (Clean, high craft, no gradient washes) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <Link
             href="/pc-builder"
-            className="p-6 rounded-3xl bg-gradient-to-br from-blue-600/10 via-card to-card border border-blue-500/20 shadow-md hover:border-blue-500 transition-all group"
+            className="p-5 rounded-xl bg-card border border-border hover:border-blue-500/80 transition-all flex flex-col justify-between group shadow-sm"
           >
-            <div className="w-12 h-12 rounded-2xl bg-blue-600/15 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 transition-transform">
-              <Cpu className="w-6 h-6" />
+            <div>
+              <div className="flex items-center justify-between text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2">
+                <span>Configurator</span>
+                <Cpu className="w-4 h-4 text-blue-500" />
+              </div>
+              <h3 className="text-base font-bold text-foreground group-hover:text-primary transition-colors">
+                Gaming PC Builder
+              </h3>
+              <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
+                Step-by-step guided configuration with automated socket checks, DDR5/DDR4 validation, and wattage calculations.
+              </p>
             </div>
-            <div className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
-              Flagship Configurator
-            </div>
-            <h3 className="text-lg font-black text-foreground mt-1">Gaming PC Builder</h3>
-            <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
-              Build by budget or purpose with automated socket, DDR4/DDR5, wattage, and clearance checks.
-            </p>
-            <div className="mt-4 flex items-center text-xs font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">
+            <div className="mt-4 pt-3 border-t border-border/60 flex items-center text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:translate-x-0.5 transition-transform">
               <span>Start PC Build</span>
-              <ArrowRight className="w-4 h-4 ml-1" />
+              <ArrowRight className="w-3.5 h-3.5 ml-1" />
             </div>
           </Link>
 
           <Link
             href="/compare"
-            className="p-6 rounded-3xl bg-gradient-to-br from-purple-600/10 via-card to-card border border-purple-500/20 shadow-md hover:border-purple-500 transition-all group"
+            className="p-5 rounded-xl bg-card border border-border hover:border-purple-500/80 transition-all flex flex-col justify-between group shadow-sm"
           >
-            <div className="w-12 h-12 rounded-2xl bg-purple-600/15 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 transition-transform">
-              <Scale className="w-6 h-6" />
+            <div>
+              <div className="flex items-center justify-between text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2">
+                <span>Direct Matrix</span>
+                <Scale className="w-4 h-4 text-purple-500" />
+              </div>
+              <h3 className="text-base font-bold text-foreground group-hover:text-purple-400 transition-colors">
+                Product Comparison
+              </h3>
+              <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
+                Compare up to 4 components side-by-side with diff highlights, benchmark scores, and store price tracking.
+              </p>
             </div>
-            <div className="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider">
-              Side-by-Side Matrix
-            </div>
-            <h3 className="text-lg font-black text-foreground mt-1">Product Comparison</h3>
-            <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
-              Compare up to 4 products at once with winner badges, value ratings, and store pricing.
-            </p>
-            <div className="mt-4 flex items-center text-xs font-bold text-purple-600 dark:text-purple-400 group-hover:translate-x-1 transition-transform">
+            <div className="mt-4 pt-3 border-t border-border/60 flex items-center text-xs font-semibold text-purple-500 group-hover:translate-x-0.5 transition-transform">
               <span>Compare Products</span>
-              <ArrowRight className="w-4 h-4 ml-1" />
+              <ArrowRight className="w-3.5 h-3.5 ml-1" />
             </div>
           </Link>
 
           <Link
             href="/fps-estimator"
-            className="p-6 rounded-3xl bg-gradient-to-br from-amber-600/10 via-card to-card border border-amber-500/20 shadow-md hover:border-amber-500 transition-all group"
+            className="p-5 rounded-xl bg-card border border-border hover:border-amber-500/80 transition-all flex flex-col justify-between group shadow-sm"
           >
-            <div className="w-12 h-12 rounded-2xl bg-amber-600/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 transition-transform">
-              <Zap className="w-6 h-6" />
+            <div>
+              <div className="flex items-center justify-between text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2">
+                <span>Lab Benchmarks</span>
+                <Zap className="w-4 h-4 text-amber-500" />
+              </div>
+              <h3 className="text-base font-bold text-foreground group-hover:text-amber-400 transition-colors">
+                FPS Estimator
+              </h3>
+              <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
+                Simulate Cyberpunk 2077, GTA VI, CS2 & Valorant frame rates across 1080p, 1440p, and 4K Ultra presets.
+              </p>
             </div>
-            <div className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">
-              Real Benchmarks
-            </div>
-            <h3 className="text-lg font-black text-foreground mt-1">FPS Estimator</h3>
-            <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
-              Simulate Cyberpunk 2077, GTA VI, CS2 & Valorant frame rates across 1080p, 1440p, and 4K.
-            </p>
-            <div className="mt-4 flex items-center text-xs font-bold text-amber-600 dark:text-amber-400 group-hover:translate-x-1 transition-transform">
-              <span>Estimate FPS</span>
-              <ArrowRight className="w-4 h-4 ml-1" />
+            <div className="mt-4 pt-3 border-t border-border/60 flex items-center text-xs font-semibold text-amber-500 group-hover:translate-x-0.5 transition-transform">
+              <span>Estimate Game FPS</span>
+              <ArrowRight className="w-3.5 h-3.5 ml-1" />
             </div>
           </Link>
 
           <Link
             href="/ai-advisor"
-            className="p-6 rounded-3xl bg-gradient-to-br from-cyan-600/10 via-card to-card border border-cyan-500/20 shadow-md hover:border-cyan-500 transition-all group"
+            className="p-5 rounded-xl bg-card border border-border hover:border-cyan-500/80 transition-all flex flex-col justify-between group shadow-sm"
           >
-            <div className="w-12 h-12 rounded-2xl bg-cyan-600/15 text-cyan-600 dark:text-cyan-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 transition-transform">
-              <Sparkles className="w-6 h-6" />
+            <div>
+              <div className="flex items-center justify-between text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2">
+                <span>AI Buying Agent</span>
+                <Sparkles className="w-4 h-4 text-cyan-500" />
+              </div>
+              <h3 className="text-base font-bold text-foreground group-hover:text-cyan-400 transition-colors">
+                AI Buying Advisor
+              </h3>
+              <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
+                Ask natural questions (*"I have ₹80,000 for a gaming PC"*) and receive tailored hardware recommendations.
+              </p>
             </div>
-            <div className="text-xs font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider">
-              Natural Language Advisor
-            </div>
-            <h3 className="text-lg font-black text-foreground mt-1">AI Buying Advisor</h3>
-            <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
-              Ask questions like "I have ₹80,000 for a gaming PC" and receive tailored hardware picks.
-            </p>
-            <div className="mt-4 flex items-center text-xs font-bold text-cyan-600 dark:text-cyan-400 group-hover:translate-x-1 transition-transform">
-              <span>Ask AI Advisor</span>
-              <ArrowRight className="w-4 h-4 ml-1" />
+            <div className="mt-4 pt-3 border-t border-border/60 flex items-center text-xs font-semibold text-cyan-500 group-hover:translate-x-0.5 transition-transform">
+              <span>Ask Advisor</span>
+              <ArrowRight className="w-3.5 h-3.5 ml-1" />
             </div>
           </Link>
         </div>
       </section>
 
-      {/* 3. Trending Tech Products Grid */}
+      {/* 3. Trending Products Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-5">
           <div>
-            <div className="inline-flex items-center space-x-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
-              <TrendingUp className="w-4 h-4" />
-              <span>Tested & Verified Hardware</span>
+            <div className="text-xs font-mono font-semibold text-primary uppercase tracking-wider">
+              Hardware Directory
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-foreground mt-1">
-              Trending Tech Products
+            <h2 className="text-xl sm:text-2xl font-black text-foreground mt-0.5">
+              Tested & Verified Tech Products
             </h2>
           </div>
           <Link
             href="/category/components"
             className="text-xs font-bold text-primary hover:underline flex items-center"
           >
-            Browse All Catalog <ArrowRight className="w-3.5 h-3.5 ml-1" />
+            Browse All <ArrowRight className="w-3.5 h-3.5 ml-1" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {trendingProducts.map((product) => {
             const price =
               currency === "INR"
@@ -158,48 +160,48 @@ export default function HomePage() {
             return (
               <div
                 key={product.id}
-                className="p-5 rounded-3xl bg-card border border-border shadow-md hover:border-primary/50 transition-all flex flex-col justify-between group"
+                className="p-4 sm:p-5 rounded-xl bg-card border border-border hover:border-primary/60 transition-all flex flex-col justify-between group shadow-sm"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-primary uppercase">
+                    <span className="text-[11px] font-mono font-bold text-primary uppercase">
                       {product.brand}
                     </span>
                     {product.badges && product.badges.length > 0 && (
-                      <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                      <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-secondary text-foreground">
                         {product.badges[0]}
                       </span>
                     )}
                   </div>
 
                   <Link href={`/product/${product.slug}`}>
-                    <h3 className="font-bold text-base text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                    <h3 className="font-bold text-sm text-foreground group-hover:text-primary transition-colors line-clamp-2">
                       {product.name}
                     </h3>
                   </Link>
 
-                  <p className="text-xs text-muted-foreground mt-2 line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-muted-foreground mt-1.5 line-clamp-2 leading-relaxed">
                     {product.description}
                   </p>
 
-                  <div className="mt-4 flex items-center justify-between text-xs">
-                    <div className="flex items-center space-x-1 text-amber-500 font-bold">
-                      <Star className="w-4 h-4 fill-amber-500 text-amber-500" />
+                  <div className="mt-3 flex items-center justify-between text-xs">
+                    <div className="flex items-center space-x-1 text-amber-500 font-mono font-bold">
+                      <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
                       <span>{product.rating}</span>
                       <span className="text-muted-foreground font-normal">
                         ({product.reviewCount})
                       </span>
                     </div>
-                    <span className="text-[11px] text-muted-foreground capitalize">
+                    <span className="text-[11px] text-muted-foreground font-mono capitalize">
                       {product.subcategory.replace("-", " ")}
                     </span>
                   </div>
                 </div>
 
-                <div className="mt-5 pt-4 border-t border-border flex items-center justify-between">
+                <div className="mt-4 pt-3 border-t border-border/80 flex items-center justify-between">
                   <div>
-                    <div className="text-[10px] text-muted-foreground">From:</div>
-                    <div className="text-lg font-black text-foreground">
+                    <div className="text-[10px] font-mono text-muted-foreground">From:</div>
+                    <div className="text-base font-black font-mono text-foreground">
                       {formatPrice(price, currency)}
                     </div>
                   </div>
@@ -207,14 +209,14 @@ export default function HomePage() {
                   <div className="flex items-center space-x-2">
                     <button
                       onClick={() => addToCompare(product)}
-                      className="p-2 rounded-xl bg-secondary hover:bg-secondary/80 text-foreground"
+                      className="p-2 rounded-lg bg-secondary hover:bg-secondary/80 text-foreground transition-colors"
                       title="Compare product"
                     >
-                      <Scale className="w-4 h-4" />
+                      <Scale className="w-3.5 h-3.5" />
                     </button>
                     <Link
                       href={`/product/${product.slug}`}
-                      className="px-3.5 py-2 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-xs shadow-sm"
+                      className="px-3.5 py-1.5 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-xs"
                     >
                       View Deals
                     </Link>
@@ -228,13 +230,12 @@ export default function HomePage() {
 
       {/* 4. Popular Buying Guides Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-5">
           <div>
-            <div className="inline-flex items-center space-x-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
-              <Layers className="w-4 h-4" />
-              <span>Independent Editorial Reviews</span>
+            <div className="text-xs font-mono font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+              Editorial Lab
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-foreground mt-1">
+            <h2 className="text-xl sm:text-2xl font-black text-foreground mt-0.5">
               Popular Buying Guides
             </h2>
           </div>
@@ -246,20 +247,20 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {featuredGuides.map((guide) => (
             <Link
               key={guide.id}
               href={`/buying-guides/${guide.slug}`}
-              className="p-5 rounded-3xl bg-card border border-border shadow-md hover:border-primary/50 transition-all flex flex-col justify-between group"
+              className="p-5 rounded-xl bg-card border border-border hover:border-primary/60 transition-all flex flex-col justify-between group shadow-sm"
             >
-              <div className="space-y-3">
-                <div className="flex items-center space-x-2 text-xs text-muted-foreground">
+              <div className="space-y-2.5">
+                <div className="flex items-center space-x-2 text-[11px] font-mono text-muted-foreground">
                   <span className="text-primary font-bold capitalize">{guide.category}</span>
                   <span>•</span>
                   <span>{guide.readTime}</span>
                 </div>
-                <h3 className="font-bold text-base text-foreground group-hover:text-primary transition-colors leading-snug">
+                <h3 className="font-bold text-sm sm:text-base text-foreground group-hover:text-primary transition-colors leading-snug">
                   {guide.title}
                 </h3>
                 <p className="text-xs text-muted-foreground line-clamp-3 leading-relaxed">
@@ -269,8 +270,8 @@ export default function HomePage() {
 
               <div className="mt-4 pt-3 border-t border-border/80 flex items-center justify-between text-xs text-muted-foreground">
                 <span>{guide.author.split(",")[0]}</span>
-                <span className="font-bold text-primary flex items-center">
-                  Read Guide <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                <span className="font-bold text-primary flex items-center text-xs">
+                  Read Guide <ArrowRight className="w-3 h-3 ml-1" />
                 </span>
               </div>
             </Link>
@@ -278,16 +279,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Live Deals & Sales Drop Section */}
+      {/* 5. Live Deals Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-5">
           <div>
-            <div className="inline-flex items-center space-x-1.5 text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">
-              <ShoppingBag className="w-4 h-4" />
-              <span>Festive & Limited-Time Discounts</span>
+            <div className="text-xs font-mono font-semibold text-rose-600 dark:text-rose-400 uppercase tracking-wider">
+              Price Drops
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-foreground mt-1">
-              Latest Price Drops
+            <h2 className="text-xl sm:text-2xl font-black text-foreground mt-0.5">
+              Verified Retailer Deals
             </h2>
           </div>
           <Link
@@ -298,7 +298,7 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {hotDeals.map((deal) => {
             const currentPrice =
               currency === "INR"
@@ -317,27 +317,27 @@ export default function HomePage() {
             return (
               <div
                 key={deal.id}
-                className="p-5 rounded-3xl bg-card border border-border shadow-md flex flex-col justify-between"
+                className="p-5 rounded-xl bg-card border border-border shadow-sm flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400">
+                    <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400">
                       {deal.saleEvent}
                     </span>
-                    <span className="text-xs font-black px-2 py-0.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                    <span className="text-xs font-mono font-black text-emerald-600">
                       -{deal.discountPercentage}% OFF
                     </span>
                   </div>
 
-                  <div className="text-xs font-bold text-muted-foreground uppercase">
+                  <div className="text-[11px] font-mono text-muted-foreground uppercase">
                     {deal.retailer}
                   </div>
                   <h3 className="font-bold text-sm text-foreground mt-1 line-clamp-2">
                     {deal.title}
                   </h3>
 
-                  <div className="mt-3 flex items-baseline space-x-2">
-                    <span className="text-xl font-black text-foreground">
+                  <div className="mt-3 flex items-baseline space-x-2 font-mono">
+                    <span className="text-lg font-black text-foreground">
                       {formatPrice(currentPrice, currency)}
                     </span>
                     <span className="text-xs text-muted-foreground line-through">
@@ -351,9 +351,9 @@ export default function HomePage() {
                     href={deal.affiliateUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center space-x-1 py-2 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-xs"
+                    className="w-full flex items-center justify-center space-x-1 py-2 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-xs"
                   >
-                    <span>Check {deal.retailer.split(" ")[0]} Deal</span>
+                    <span>Check Store Price</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
@@ -363,30 +363,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. High-Conversion SEO Cluster Callout */}
+      {/* 6. Clean, Restrained CTA Callout */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-blue-900/40 via-indigo-950/40 to-purple-950/40 border border-blue-500/30 text-center space-y-4">
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
-            Intelligent Tech Platform
+        <div className="p-8 rounded-2xl bg-card border border-border text-center space-y-3">
+          <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-primary">
+            Next-Gen PC Configurator
           </span>
-          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            Ready to Configure Your Dream Setup?
+          <h2 className="text-2xl sm:text-3xl font-black text-foreground tracking-tight">
+            Configure Your Build Without Bottlenecks
           </h2>
-          <p className="text-sm text-blue-100/80 max-w-xl mx-auto leading-relaxed">
-            Validate component socket compatibility, calculate power supply requirements, preview game FPS, and compare multi-store pricing with zero guesswork.
+          <p className="text-xs sm:text-sm text-muted-foreground max-w-lg mx-auto leading-relaxed">
+            Automated socket checks, DDR5 validation, transient power headroom calculations, and multi-store pricing across verified retailers.
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/pc-builder"
-              className="px-6 py-3 rounded-xl bg-primary hover:bg-primary/90 text-white font-bold text-sm shadow-lg shadow-primary/30 transition-transform hover:scale-105"
+              className="px-5 py-2.5 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-xs shadow-sm"
             >
-              Launch PC Builder
+              Open PC Builder
             </Link>
             <Link
-              href="/ai-advisor"
-              className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 transition-colors"
+              href="/compare"
+              className="px-5 py-2.5 rounded-lg bg-secondary hover:bg-secondary/80 text-foreground font-bold text-xs border border-border"
             >
-              Ask AI Advisor
+              Compare Products
             </Link>
           </div>
         </div>
